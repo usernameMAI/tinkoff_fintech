@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "todo"
+version = "0.1.0"
+description = ""
+authors = ["Dmitriy Zubko <vale432@mail.ru>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Flask = "^2.0.3"
+Flask-Login = "^0.5.0"
+
+[tool.poetry.dev-dependencies]
+pytest-cov = "^3.0.0"
+flake8 = "^4.0.1"
+pylint = "^2.12.2"
+mock = "^4.0.3"
+pytest = "^7.1.1"
+mypy = "^0.941"
+isort = "^5.10.1"
+types-mock = "^4.0.12"
+black = "^22.1.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

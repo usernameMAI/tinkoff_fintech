@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <h1>Crypto-Trade</h1>
+    <form action="/home" method="get">
+    <input type="submit" name="history" value="Go to home page">
+    </form>
+    <h2>Your login {{ login }}</h2>
+    <h2>Your money {{ money }}</h2>
+    <h2>Your cryptos:</h2>
+    {% for element in cryptos %}
+                <form action="/portfolio/{{ element.name_crypto }}" method="post">
+                    <span>{{ element.name_crypto }}, count = {{ element.count }}, price = {{prices[element.name_crypto]}} </span>
+                    <button type="submit">Sell</button>
+                </form>
+    {% endfor %}
+</head>
+<body>
+
+</body>
+</html>

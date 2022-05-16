@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo</title>
+</head>
+<body>
+    <h1>ToDo</h1>
+
+    <style>
+    ul.inl {
+    margin: 0; /* Обнуляем значение отступов */
+    padding: 4px; /* Значение полей */
+    }
+    ul.inl form {
+    display: inline; /* Отображать как строчный элемент */
+    }
+    </style>
+    <ul class="inl">
+    <form action="/" method="get">
+    <input type="submit" name="changer" value="All">
+    </form>
+    <form action="/active" method="get">
+    <input type="submit" name="changer" value="Active">
+    </form>
+    <form action="/completed" method="get">
+    <input type="submit" name="changer" value="Completed">
+    </form>
+    </form>
+    </ul>
+
+    <br>
+    <form action="/add" method="post">
+        <div>
+            <label for="title">Todo Title</label>
+            <input type="text" name="title" placeholder="Enter Todo...">
+            <button type="submit">Add</button>
+        </div>
+    </form>
+    <ul class="inl">
+        {% for key in todo_list.db %}
+            {% if show_finished and todo_list.db[key].complete or show_not_finished and not todo_list.db[key].complete %}
+                <p> {{ key }} | {{ todo_list.db[key].title }} </p>
+                {% if todo_list.db[key].complete == False %}
+                    <span>Not Complete</span>
+                {% else %}
+                    <span>Completed</span>
+                {% endif %}
+
+            <form action="/update/{{ key }}" method="post">
+
+                <button type="submit">Update</button>
+
+            </form>
+
+            {% endif %}
+        {% endfor %}
+    </ul>
+</body>
+</html>

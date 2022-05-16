@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    ul.inl {
+    margin: 0; /* Обнуляем значение отступов */
+    padding: 4px; /* Значение полей */
+    }
+    ul.inl form {
+    display: inline; /* Отображать как строчный элемент */
+    }
+    </style>
+
+    <h1>Crypto-Trade</h1>
+    <form action="/home" method="get">
+    <input type="submit" name="history" value="Go to home page">
+    </form>
+    <h2>Your login {{ login }}</h2>
+    <h2>Your money {{ money }}</h2>
+    {% for element in history %}
+        <br>
+        {% if element.operation %}
+            <span> Вы купили криптовалюту {{ element.name_crypto }} по цене {{ element.cost }}</span>
+        {% else %}
+            <span> Вы продали криптовалюту {{ element.name_crypto }} по цене {{ element.cost }}</span>
+        {% endif %}
+    {% endfor %}
+    <br>
+
+    {% if prev %}
+        <a href="{{ prev_url }}">&laquo; Previous</a>
+    {% endif %}
+
+    {% if next %}
+        <a href="{{ next_url }}">Next &raquo;</a>
+    {% endif %}
+
+</body>
+</html>
